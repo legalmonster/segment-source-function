@@ -8,46 +8,52 @@ exports.processEvents = async (event) => {
   let marketingConsentState = false;
   let identifier = null;
 
-  if(eventBody.consent.state === "active"){
-    marketingConsentState = true
-  }
+  if (eventBody.consent.document.document_category.slug === "email_marketing") {
 
-  if(eventBody.consent.user.identifier === null){
-    if(eventBody.consent.user.email !== null){
-      identifier = eventBody.consent.user.email;
+    if (eventBody.consent.state === "active"){
+      marketingConsentState = true
     }
-  } else {
-    identifier = eventBody.consent.user.identifier;
-  }
 
-
-  // Return an object with any combination of the following keys
-  let returnValue = {
-    events: [{
-        type: 'identify',
-        userId: identifier,
-        traits: {
-          marketingConsent: marketingConsentState,
-          name: eventBody.consent.user.name,
-          email: eventBody.consent.user.email
-        }
-    },
-    {
-        type: 'track',
-        event: eventBody.event_name,
-        userId: identifier,
-        properties: {
-          marketingConsent: marketingConsentState
-        }
-    }],
-    objects: [{
-      collection: 'Consents',
-      id: eventBody.consent.public_key,
-      properties: {
+    if (eventBody.consent.user.identifier === null){
+      if(eventBody.consent.user.email !== null){
+        identifier = eventBody.consent.user.email;
       }
-    }]
-  }
+    } else {
+      identifier = eventBody.consent.user.identifier;
+    }
 
-  // Return the Javascript object with a key of events, objects or both
-  return(returnValue)
+
+    // Return an object with any combination of the following keys
+    let returnValue = {
+      events: [{
+          type: 'identify',
+          userId: identifier,
+          traits: {
+            marketingConsent: marketingConsentState,
+            name: eventBody.consent.user.name,
+            email: eventBody.consent.user.email
+          }
+      },
+      {
+          type: 'track',
+          event: eventBody.event_name,
+          userId: identifier,
+          properties: {
+            marketingConsent: marketingConsentState
+          }
+      }],
+      objects: [{
+        collection: 'Consents',
+        id: eventBody.consent.public_key,
+        properties: {
+        }
+      }]
+    }
+
+    // Return the Javascript object with a key of events, objects or both
+    return returnValue;
+
+  } else {
+    return null;
+  }
 }

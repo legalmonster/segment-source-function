@@ -28,6 +28,7 @@
               "updated_at": "2019-08-08 18:22:57 UTC",
               "document_category": {
                   "name": "Email Marketing"
+                  "slug": "email_marketing"
               },
               "revision": {
                   "public_key": "bky9gbhaNWRTDuMi7TTKg4Je",
