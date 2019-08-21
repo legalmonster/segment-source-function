@@ -1,0 +1,45 @@
+{
+  "payload": {
+    "body": {
+      "consent": {
+          "active_consent": true,
+          "consentet_to_text": "Email marketing",
+          "ip": "31.3.72.56",
+          "source": "API",
+          "created_at": "2019-08-21 10:49:30 UTC",
+          "referer": "https://www.legalmonster.com/features/marketing-consent/",
+          "state": "active",
+          "withdrawn_at": null,
+          "public_key": "1Qe9bvJYxTJJPA1vfYYZyvJY",
+          "cta_to_consent_text": "Find time",
+          "user": {
+              "public_key": "NEfUpzaGgm5eCmwp5wAJXHqGsadf",
+              "identifier": "1234",
+              "email": "test@legalmonster.com",
+              "name": "Niklas Stephenson Testing Segment",
+              "created_at": "2019-08-21 10:48:25 UTC",
+              "updated_at": "2019-08-21 10:49:30 UTC",
+              "last_seen_at": "2019-08-21 10:49:30 UTC"
+          },
+          "document": {
+              "public_key": "ohK9ZN7bSzkg1J1FArqykTBd",
+              "title": "to receive email marketing",
+              "created_at": "2019-08-08 18:19:04 UTC",
+              "updated_at": "2019-08-08 18:22:57 UTC",
+              "document_category": {
+                  "name": "Email Marketing"
+              },
+              "revision": {
+                  "public_key": "bky9gbhaNWRTDuMi7TTKg4Je",
+                  "state": "published",
+                  "consent_already_collected": false,
+                  "formatted_text": "Email marketing",
+                  "created_at": "2019-08-08 18:19:06 UTC",
+                  "updated_at": "2019-08-08 18:19:06 UTC"
+              }
+          }
+      },
+      "event_name": "consent_created"
+    }
+  }
+}
