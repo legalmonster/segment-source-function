@@ -37,14 +37,12 @@ exports.processEvents = async (event) => {
         event: eventBody.event_name,
         userId: identifier,
         properties: {
-          marketingConsent: marketingConsentState,
-          ip: eventBody.consent.ip,
-          referer: eventBody.consent.referer
+          marketingConsent: marketingConsentState
         }
     }],
     objects: [{
       collection: 'Consents',
-      id: "String of Object ID",
+      id: eventBody.consent.public_key,
       properties: {
       }
     }]
